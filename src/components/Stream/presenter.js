@@ -1,10 +1,16 @@
 import React from 'react';
 
-function Stream({ tracks = [] }) {
+function Stream({ tracks = [], onAuth }) {
   return (
     <div>
-      {tracks.map((track, key) =>
-        <div className="track" key={key}>{track.title}</div>)}
+      <div>
+        <button onClick={onAuth} type="button">Login</button>
+      </div>
+      <br />
+      <div>
+        {tracks.map((track, key) =>
+          <div className="track" key={key}>{track.title}</div>)}
+      </div>
     </div>
   );
 }

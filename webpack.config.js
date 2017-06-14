@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
@@ -23,6 +25,11 @@ module.exports = {
     contentBase: './dist',
     port: 3000,
     hot: true,
-    historyApiFallback: true,
+    historyApiFallback: true, // This allows purely client-side routing.
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
+    }),
+  ],
 };
